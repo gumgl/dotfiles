@@ -1,0 +1,80 @@
+#!/bin/bash
+#
+# This: gets the list of all staged files (not marked as ??)
+#		keeps only the path part
+#		separates the two paths when a file is renamed because such a change affects both directories
+#		removes the quotes if path is quoted by git
+#		keeps only the location of each path (i.e. gets rid of file names and files in root)
+
+#CONFIG
+debug_enable=false
+before="" # comes before the path
+default="/" # replaces the path if we're at the root
+after=": " # separates the path and the commit msg
+
+sed_escape() {
+	echo "$1" | sed 's/[]\/$*.^|[]/\\&/g'
+}
+debug() {
+	if [ $debug_enable = true ] ; then
+		echo "$1"
+	fi
+}
+
+#SCRIPT
+
+debug "====input"
+debug "`git status --porcelain`"
+paths=`git status --porcelain \
+	| sed -r -e '/^\?\?/d' \
+		-e 's/^.{3}//' \
+		-e 's/ -> /\n/' \
+	| sed -r -e 's/^"(.*)"$/\1/' `
+debug "====parsed"
+debug "$paths"
+best="" # narrowest all-encompassing scope
+stop=false
+
+while :; do
+
+	topdir=`echo "$paths" | sed -nr '1s/^([^\/]*)\/.*$/\1/p'` # on first line before the first /
+	debug "====topdir:$topdir"
+	
+	if [ "$topdir" == "" ] ; then
+		debug "did not find a /"
+		break # there was no /, so we have gone the deepest we can
+	fi
+	
+	count=`echo "$paths" | wc -l` # count the lines
+	
+	topdiresc=`sed_escape "$topdir"` # escape the characters for sed to use!
+	debug "topdiresc=$topdiresc"
+	
+	paths=`echo "$paths" | sed -rn -e "s/^$topdiresc\///p"` # remove topdir from every path
+	newcount=`echo "$paths" | wc -l` # count the lines
+	
+	debug "count=$count"
+	debug "new count=$newcount"
+	
+	if [ $count -ne $newcount ] ; then
+		debug "count is different"
+		break # some paths did not contain topdir, therefore we have found the best path
+	fi
+	
+	best="$best/$topdir" # add top dir to the best
+done
+
+if [ "$best" == "" ] ; then # replace path if empty
+	best="$default"
+fi
+
+debug "best=$best"
+prepend=`sed_escape "$before$best$after"`
+debug "prepend=$prepend"
+sed -i -e "1s/^/$prepend/" $1 # prepend the commit msg
+cat $1
+
+if [ $debug_enable = true ] ; then
+	exit 1
+fi
+

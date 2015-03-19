@@ -1,0 +1,14 @@
+Host g
+    Hostname direct.labran.ch
+    User gumgl
+
+Host socs
+	Hostname ubuntu.cs.mcgill.ca
+
+# Machines in the open lab of Trottier 3rd floor
+Host socs-open
+	Hostname open-11.cs.mcgill.ca
+
+Host *.cs.mcgill.ca
+    User glabra
+
