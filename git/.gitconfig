@@ -3,6 +3,8 @@
 	email = gumgl@users.noreply.github.com
 [push]
 	default = simple
+[advice]
+	statusHints = false
 	
 [alias]
   co = checkout
