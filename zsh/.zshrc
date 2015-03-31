@@ -88,6 +88,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
+alias unzip='tar -zxvf'
 
 # copy my scope git hook into 
 
