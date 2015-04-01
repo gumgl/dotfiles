@@ -89,6 +89,8 @@ alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
 alias untar='tar -zxvf'
+alias mv='mv -i'
+alias rm='rm -i'
 
 # copy my scope git hook into 
 
