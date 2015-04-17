@@ -100,4 +100,3 @@ alias rm='rm -i'
 alias socs='sshfs -o allow_other -o IdentityFile=~/.ssh/id_rsa glabra@linux.cs.mcgill.ca: /mnt/socs'
 
 eval "$(hub alias -s)"
-chuck_cow
