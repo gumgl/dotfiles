@@ -1,0 +1,3 @@
+ssh/.ssh/*_rsa*
+ssh/.ssh/known_hosts
+
