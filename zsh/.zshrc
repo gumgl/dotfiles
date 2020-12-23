@@ -46,7 +46,7 @@ ZSH_THEME="random"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras chucknorris command-not-found sudo)
+plugins=(git git-extras command-not-found sudo)
 
 # User configuration
 
@@ -99,4 +99,4 @@ alias rm='rm -i'
 # http://socsinfo.cs.mcgill.ca/wiki/Labs
 alias socs='sshfs -o allow_other -o IdentityFile=~/.ssh/id_rsa glabra@linux.cs.mcgill.ca: /mnt/socs'
 
-eval "$(hub alias -s)"
+#eval "$(hub alias -s)"
