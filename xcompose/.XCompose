@@ -1,0 +1,29 @@
+include "%L"
+
+<Multi_key> <c> <m> : "✓" U2713
+<Multi_key> <n> <c> <m> : "⍻" U237B
+
+<Multi_key> <1> <3> : "⅓" U2153
+<Multi_key> <2> <3> : "⅔" U2154
+<Multi_key> <1> <5> : "⅕" U2155
+<Multi_key> <2> <5> : "⅖" U2156
+<Multi_key> <3> <5> : "⅗" U2157
+<Multi_key> <4> <5> : "⅘" U2158
+<Multi_key> <1> <6> : "⅙" U2159
+<Multi_key> <5> <6> : "⅚" U215A
+<Multi_key> <1> <7> : "⅐" U2150
+<Multi_key> <1> <8> : "⅛" U215B
+<Multi_key> <3> <8> : "⅜" U215C
+<Multi_key> <5> <8> : "⅝" U215D
+<Multi_key> <7> <8> : "⅞" U215E
+<Multi_key> <1> <9> : "⅑" U2151
+<Multi_key> <1> <0> : "⅒" U2152
+
+<Multi_key> <asciitilde> <asciitilde> : "≈" U2248 # ALMOST EQUAL TO
+<Multi_key> <asciitilde> <equal> : "≃" similarequal # ASYMPTOTICALLY EQUAL TO
+<Multi_key> <slash> <asciitilde> <equal> : "≄" U2244 # NOT ASYMPTOTICALLY EQUAL TO
+<Multi_key> <equal> <asciitilde> : "≅" U2245 # APPROXIMATELY EQUAL TO
+<Multi_key> <asciitilde> <less> : "≲" U2272 # LESS-THAN OR EQUIVALENT TO
+<Multi_key> <asciitilde> <greater> : "≳" U2273 # GREATER-THAN OR EQUIVALENT TO
+
+# Useful command to find keysyms: xev -event keyboard
