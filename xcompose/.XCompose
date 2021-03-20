@@ -1,5 +1,7 @@
 include "%L"
 
+include "shared/emoji-base"
+
 <Multi_key> <c> <m> : "✓" U2713
 <Multi_key> <n> <c> <m> : "⍻" U237B
 

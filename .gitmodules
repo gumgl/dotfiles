@@ -1,0 +1,3 @@
+[submodule "xcompose/shared"]
+	path = xcompose/shared
+	url = git@github.com:kragen/xcompose.git
